@@ -35,9 +35,23 @@ head(data,2) # first two rows
 tail(data,2) # last two rows
 
 
-data4 <- read.table("hw1_data.csv",header=TRUE, nrows=1,  skip=46 )
-data4
+data5 <- read.table("hw1_data.csv",nrows=1,  skip=1 )
+data5
 
 
+data6 <- read.table("hw1_data.csv", header=TRUE,nrows=1,  skip=46 )
+data6
+data[0,3]
 
+getwd()
+x1 <- read.csv("hw1_data.csv")
+x1
 
+#How many missing values are in the Ozone column of this data frame?
+sum(is.na(x1[1])) 
+
+mean(complete.cases(x1[,1]))
+
+summary(x1)
+
+x1[1]
