@@ -37,5 +37,41 @@ length(writers_df) # length of row
 
 writers_df
 
+writers_df$'died@age'
+
+diedAge <- writers_df$'died@age'
+diedAge
+
+writers_df[2,2] <- 19
+writers_df$`writer@age`
+
+writers_df$`died@age`
+writers_df$`died@age` <- writers_df$`died@age` -1
+writers_df$`died@age`
+
+writers_df
+writers_df[1,3]
+writers_df[1,3] <- "Johnson"
+writers_df
+
+
+attach(writers_df) # put this dataframe into memory.
+diedAge
+`died@age`
+
+
+#numeric calculation
+
+age <- writers_df[1:2]
+age
+
+apply(age, 2, mean)
+apply(age,1,median)
+apply(age,2,median)
+
+
+
+#Subsetting Data Frames
+
 
 
