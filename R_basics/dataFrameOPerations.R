@@ -36,3 +36,11 @@ summary(df)
 
 df
 df[2,3]
+
+getwd()
+
+dataset4  <- read.table("dataSet.csv")
+#head(data,2) # first two rows
+#tail(data,2) # last two rows
+dataset4
+
