@@ -70,8 +70,11 @@ apply(age,1,median)
 apply(age,2,median)
 
 
+## Lets bring back the sample set
+dataSet1 <- read.table("dataSet.csv")  
+dataSet1
 
-#Subsetting Data Frames
+
 
 
 
