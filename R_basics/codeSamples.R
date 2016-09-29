@@ -1,3 +1,12 @@
+## Lets understand Paste 
+
+paste("00",1:9, sep = "") #[1] "001" "002" "003" "004" "005" "006" "007" "008" "009"
+paste(c("abc", "def", "ghi")) # [1] "abc" "def" "ghi"
+paste("abc", "def", "ghi") #[1] "abc def ghi"
+paste("abc", "def", "ghi", sep = "") #[1] "abcdefghi"
+
+
+
 whales <- c("C","D","C","D","D")
 quails <- c("D","D","D","D","D")
 
@@ -8,8 +17,10 @@ results <-paste(whales, quails, sep = "", collapse = "") #"CDDDCDDDDD"
 results <-paste(whales, quails, sep = "", collapse = " ") #[1] "CD DD CD DD DD"
 results <-paste(whales, quails, sep = " ", collapse = " ") #[1] "C D D D C D D D D D"
 
+#*****************************************************************************************#
 ## sep allows each terms to be separated by a character string, 
 #whereas collapse allows the entire result to be separated by a character string.
+#*****************************************************************************************#
 results <-paste(whales, quails, sep = "-")  #[1] "C-D" "D-D" "C-D" "D-D" "D-D"
 results <-paste(whales, quails) #[1] "C D" "D D" "C D" "D D" "D D"
 results <-paste(whales, quails, collapse = "-") #[1] "C D-D D-C D-D D-D D"
@@ -47,17 +58,20 @@ for (i in 1:101) {
 }
 
 
-## Lets understand Paste 
+##file_Paths = paste(getwd(),"/specdata/", "00",1:9,".csv", sep = "") #
 
-paste("00",1:9, sep = "") #[1] "001" "002" "003" "004" "005" "006" "007" "008" "009"
-paste(c("abc", "def", "ghi")) # [1] "abc" "def" "ghi"
-paste("abc", "def", "ghi") #[1] "abc def ghi"
-paste("abc", "def", "ghi", sep = "") #[1] "abcdefghi"
+# https://www.r-bloggers.com/looping-through-files/
+path= paste(getwd(),"/specdata/", sep = "")
+print(path)
+file_names = dir(path, pattern="*.csv" )
 
-
-
-paste(getwd(),"/specdata/", "00",1:9,".csv", sep = "") #
-
-
+for (i in 100:101) {
+  loc <- paste(getwd(),"/specdata/", file_names[i], sep = "")
+  print(loc)
+  file <- read.table(loc,header=TRUE, sep=";", stringsAsFactors=FALSE)
+  print(file)
+  
+}
+#print(file_names)
 
 
