@@ -55,3 +55,17 @@ mean(complete.cases(x1[,1]))
 summary(x1)
 
 x1[1]
+
+closeAllConnections()
+data <- 0
+final_data <- data()
+
+for (i in 1:3) {
+  final_data = c(final_data, 2)
+}
+
+print(mean(final_data))
+
+
+
+

@@ -132,3 +132,4 @@ sink()
 unlink("output.txt") # delete the file 
 
 
+getwd()
