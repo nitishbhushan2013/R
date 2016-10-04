@@ -92,6 +92,46 @@ swirl() # Start the program
 #   [1] "Hello world!"
 
 
+  15. NA
+      1. Missing values play an important role in statistics and data analysis.
+      2. In R, NA is used to represent any value that is 'not available' or 'missing' (in the statistical sense).
+      3. Any operation involving NA generally yields NA as the result.
+          my_data == NA
+          [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 
+          NA NA NA NA
+          
+          1. The reason you got a vector of all NAs is that NA is not really a value, but just a placeholder for a quantity that is
+          | not available. Therefore the logical expression is incomplete and R has no choice but to return a vector of the same
+          | length as my_data that contains all NAs.
+          
+          
+          2. calculate Non NA value inside vector - R represents TRUE as the number 1 and FALSE as the number 0.
+          | Therefore, if we take the sum of a bunch of TRUEs and FALSEs, we get the total number of TRUEs.
+               my_na <- is.na(my_data)
+               sum(my_na) -- total number of NAs  or length(my_data[is.na(my_data)])
+               
+          3. `!` gives us the negation of a logical expression, so !is.na(x) can be read as 'is not NA'. Therefore, if we
+             | want to create a vector called y that contains all of the non-NA values from x, we can use y <- x[!is.na(x)]. 
+             my_na <- !is.na(my_data)
+             sum(my_na) -- total number of non NAs
+               
+          
+  16. NaN 
+      1. It represent Not A Number
+          0 /0
+          Inf - Inf
+  
+          
+   17. Subsetting - how to extract elements from a vector based on some conditions
+      1. y [y >0] - only return those values which satisfy the condition. For exm:
+          x <- c(1,NA,NA,3,3,NA,NA,NA)
+          > x[!is.na(x)]
+          [1] 1 3 3
+          > x[is.na(x)]
+          [1] NA NA NA NA NA
+          
+      
+      
     
      
     
