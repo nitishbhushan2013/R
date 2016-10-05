@@ -246,8 +246,91 @@ swirl() # Start the program
 #               
             
     
+#     19. Logic
+#       1. There are two AND operators in R, `&` and `&&`. Both operators work similarly
+#       
+#       2. You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evaluates the first member of
+#       | a vector.
+#       
+#           TRUE & c(TRUE, FALSE, FALSE)
+#           [1]  TRUE FALSE FALSE
+#           the left operand `TRUE` is recycled across every element in the vector of the right
+#           | operand. This is the equivalent statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE).
+#           
+#           
+#           TRUE && c(TRUE, FALSE, FALSE)
+#           [1] TRUE
+#           the left operand is only evaluated with the first member of the right operand (the vector). The rest of the
+#           | elements in the vector aren't evaluated at all in this expression.
+# 
+# 
+#       3. The OR operator follows a similar set of rules. The `|` version of OR evaluates OR across an entire vector, while the
+#  `||` version of OR only evaluates the first member of a vector.
+# 
+#       4. Ordering - All AND operators are evaluated before OR operators 
+# 
+#       5. The function isTRUE() takes one argument. If that argument evaluates to TRUE, the function will return TRUE. Otherwise,
+# the function will return FALSE.
+# 
+#       6. xor() -> The xor() function stands for exclusive OR. If one argument evaluates to TRUE and one argument evaluates
+#       to FALSE, then this function will return TRUE, otherwise it will return FALSE. 
+# 
+#       7. The which() function takes a logical vector as
+# | an argument and returns the indices of the vector that are TRUE. For example which(c(TRUE, FALSE, TRUE)) would return the
+#           | vector c(1, 3).
+# 
+#             ints <- sample(10)
+#             ints <=2
+#               [1] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+#           > which(ints <= 2)
+#               [1] 3 4
+# 
+#       8. any() or all() --> the functions any() and all() take logical vectors as their argument. The any() function will
+#          return TRUE if one or more of the elements in the logical vector is TRUE. The all() function will return TRUE if every
+#         element in the logical vector is TRUE.
+#         
+            
+      
+  20. Functions 
+    1. To understand computations in R, two slogans are helpful: 1. Everything that exists is an object. 2. Everything that
+    | happens is a function call.
     
-        
+    2. You can also explicitly specify arguments in a function. When you explicitly designate argument values by name, the
+    | ordering of the arguments becomes unimportant. You can try this out by typing: remainder(divisor = 11, num = 5).
+    
+    3. args(remainder) to examine the arguments for the remainder function.
+    
+    4. args() is a function, remainder() is a function, yet remainder was an argument for args(). Yes it's true:
+      you can pass functions as arguments! This is a very powerful concept.
+
+         # You can pass functions as arguments to other functions just like you can pass
+        # data to functions. Let's say you define the following functions:
+              #
+              # add_two_numbers <- function(num1, num2){
+              #    num1 + num2
+              # }
+              #
+              # multiply_two_numbers <- function(num1, num2){
+              #	num1 * num2
+              # }
+              #
+              # some_function <- function(func){
+              #    func(2, 4)
+            # }
+            #
+            # As you can see we use the argument name "func" like a function inside of 
+            # "some_function()." By passing functions as arguments 
+            # some_function(add_two_numbers) will evaluate to 6, while
+            # some_function(multiply_two_numbers) will evaluate to 8.
+    
+      5. 
+  
+          
+          
+          
+          
+      
+      
     
     
 
