@@ -246,8 +246,224 @@ swirl() # Start the program
 #               
             
     
+#     19. Logic
+#       1. There are two AND operators in R, `&` and `&&`. Both operators work similarly
+#       
+#       2. You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evaluates the first member of
+#       | a vector.
+#       
+#           TRUE & c(TRUE, FALSE, FALSE)
+#           [1]  TRUE FALSE FALSE
+#           the left operand `TRUE` is recycled across every element in the vector of the right
+#           | operand. This is the equivalent statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE).
+#           
+#           
+#           TRUE && c(TRUE, FALSE, FALSE)
+#           [1] TRUE
+#           the left operand is only evaluated with the first member of the right operand (the vector). The rest of the
+#           | elements in the vector aren't evaluated at all in this expression.
+# 
+# 
+#       3. The OR operator follows a similar set of rules. The `|` version of OR evaluates OR across an entire vector, while the
+#  `||` version of OR only evaluates the first member of a vector.
+# 
+#       4. Ordering - All AND operators are evaluated before OR operators 
+# 
+#       5. The function isTRUE() takes one argument. If that argument evaluates to TRUE, the function will return TRUE. Otherwise,
+# the function will return FALSE.
+# 
+#       6. xor() -> The xor() function stands for exclusive OR. If one argument evaluates to TRUE and one argument evaluates
+#       to FALSE, then this function will return TRUE, otherwise it will return FALSE. 
+# 
+#       7. The which() function takes a logical vector as
+# | an argument and returns the indices of the vector that are TRUE. For example which(c(TRUE, FALSE, TRUE)) would return the
+#           | vector c(1, 3).
+# 
+#             ints <- sample(10)
+#             ints <=2
+#               [1] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+#           > which(ints <= 2)
+#               [1] 3 4
+# 
+#       8. any() or all() --> the functions any() and all() take logical vectors as their argument. The any() function will
+#          return TRUE if one or more of the elements in the logical vector is TRUE. The all() function will return TRUE if every
+#         element in the logical vector is TRUE.
+#         
+            
+      
+  # 20. Functions 
+  #   1. To understand computations in R, two slogans are helpful: 1. Everything that exists is an object. 2. Everything that
+  #   | happens is a function call.
+  #   
+  #   2. You can also explicitly specify arguments in a function. When you explicitly designate argument values by name, the
+  #   | ordering of the arguments becomes unimportant. You can try this out by typing: remainder(divisor = 11, num = 5).
+  #   
+  #   3. args(remainder) to examine the arguments for the remainder function.
+  #   
+  #   4. args() is a function, remainder() is a function, yet remainder was an argument for args(). Yes it's true:
+      #you can pass functions as arguments! This is a very powerful concept.
+
+         # You can pass functions as arguments to other functions just like you can pass
+        # data to functions. Let's say you define the following functions:
+              #
+              # add_two_numbers <- function(num1, num2){
+              #    num1 + num2
+              # }
+              #
+              # multiply_two_numbers <- function(num1, num2){
+              #	num1 * num2
+              # }
+              #
+              # some_function <- function(func){
+              #    func(2, 4)
+            # }
+            #
+            # As you can see we use the argument name "func" like a function inside of 
+            # "some_function()." By passing functions as arguments 
+            # some_function(add_two_numbers) will evaluate to 6, while
+            # some_function(multiply_two_numbers) will evaluate to 8.
+
     
-        
+     # 5. ellipses - This is a strict rule in R programming: all arguments after an ellipses must have default values.
+    #Usually a function that has the
+    # ellipses as an argument has the ellipses as the last argument. The usage of
+    # such a function would look like:
+    #
+    # ellipses_func(arg1, arg2 = TRUE, ...)
+    #
+    # In the above example arg1 has no default value, so a value must be provided
+    # for arg1. arg2 has a default value, and other arguments can come after arg2
+    # depending on how they're defined in the ellipses_func() documentation.
+    # Interestingly the usage for the paste function is as follows:
+    #
+    # paste (..., sep = " ", collapse = NULL)
+    #
+    # Notice that the ellipses is the first argument, and all other arguments after
+    # the ellipses have default values.  
+  
+          
+     
+
+  # 21. date and time
+  # 
+  #     Sys.Date()
+  #         [1] "2016-10-05"
+  #     > Sys.time()
+  #          [1] "2016-10-05 22:02:41 AEDT"
+  #     
+  #   1. Dates are represented by the 'Date' class and times are represented by the 'POSIXct' and 'POSIXlt' classes. Internally,
+  #   | dates are stored as the number of days since 1970-01-01 and times are stored as either the number of seconds since
+  #   | 1970-01-01 (for 'POSIXct') or a list of seconds, minutes, hours, etc. (for 'POSIXlt')
+  #   
+  #   2. We can use the unclass() function to see what d1 looks like internally.
+  #       
+  #       d1 <- Sys.Date()
+  #       class(d1)
+  #         [1] "Date"
+  #       unclass(d1)
+  #         [1] 17079
+  #       
+  #   3.     t1 <- Sys.time()
+  #             [1] "2016-10-05 22:03:35 AEDT"
+  #          class(t1)
+  #              [1] "POSIXct" "POSIXt"  #POSIXct is just one of two ways that R represents time information. (You can ignore the second
+  #          |                  #value above, POSIXt, which just functions as a common language between POSIXct and POSIXlt.)
+  #         
+  #         unclass(t1)
+  #            [1] 1475665416     
+  #         
+  #          t2 <- as.POSIXlt(Sys.time())
+  #          
+  #          t2
+  #             [1] "2016-10-05 22:05:34 AEDT"
+  #     
+  #          unclass(t2)
+  #              $sec
+  #              [1] 34.20425
+  #              
+  #              $min
+  #              [1] 5
+  #              
+  #              $hour
+  #              [1] 22
+  #              
+  #              $mday
+  #              [1] 5
+  #              
+  #              $mon
+  #              [1] 9
+  #              
+  #              $year
+  #              [1] 116
+  #              
+  #              $wday
+  #              [1] 3
+  #              
+  #              $yday
+  #              [1] 278
+  #              
+  #              $isdst
+  #              [1] 1
+  #              
+  #              $zone
+  #              [1] "AEDT"
+  #              
+  #              $gmtoff
+  #              [1] 39600
+  #              
+  #              attr(,"tzone")
+  #              [1] ""     "AEST" "AEDT"
+  #          
+  #          str(unclass(t2))
+  #              List of 11
+  #              $ sec   : num 34.2
+  #              $ min   : int 5
+  #              $ hour  : int 22
+  #              $ mday  : int 5
+  #              $ mon   : int 9
+  #              $ year  : int 116
+  #              $ wday  : int 3
+  #              $ yday  : int 278
+  #              $ isdst : int 1
+  #              $ zone  : chr "AEDT"
+  #              $ gmtoff: int 39600
+  #              - attr(*, "tzone")= chr [1:3] "" "AEST" "AEDT"
+  #          
+  #          t2$min
+  #             [1] 5
+  #          
+  #          
+  #     4.  weekdays(), months(), and quarters()
+  #     
+  #     5. Often, the dates and times in a dataset will be in a format that R does not recognize. The strptime() function can be
+  #     | helpful in this situation. strptime() converts character vectors to POSIXlt.
+  #     
+  #         t3 <- "October 17, 1986 08:24"
+  #         t4 <- strptime(t3, "%B %d, %Y %H:%M")
+  #         t4
+  #           [1] "1986-10-17 08:24:00 AEST"
+  #     
+  #     6. there are a number of operations that you can perform on dates and times, including arithmetic operations 
+  #     (+ and  -) and comparisons (<, ==, etc.)
+  #     
+  #     Sys.time() > t1
+  #     [1] TRUE
+  #     
+  #     Sys.time() - t1
+  #     Time difference of 12.96315 mins
+  #     
+  #     7. f you want more control over the units when finding the above difference in times, you can use difftime(), 
+  #     which allows you to specify a 'units' parameter.
+  #     
+  #         difftime(Sys.time(), t1, units='days')
+  #         Time difference of 0.009619268 days
+      
+      
+      
+      
+      
+      
+      
     
     
 
