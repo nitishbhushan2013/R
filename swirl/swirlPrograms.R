@@ -92,83 +92,158 @@ swirl() # Start the program
 #   [1] "Hello world!"
 
 
-  15. NA
-      1. Missing values play an important role in statistics and data analysis.
-      2. In R, NA is used to represent any value that is 'not available' or 'missing' (in the statistical sense).
-      3. Any operation involving NA generally yields NA as the result.
-          my_data == NA
-          [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 
-          NA NA NA NA
-          
-          1. The reason you got a vector of all NAs is that NA is not really a value, but just a placeholder for a quantity that is
-          | not available. Therefore the logical expression is incomplete and R has no choice but to return a vector of the same
-          | length as my_data that contains all NAs.
-          
-          
-          2. calculate Non NA value inside vector - R represents TRUE as the number 1 and FALSE as the number 0.
-          | Therefore, if we take the sum of a bunch of TRUEs and FALSEs, we get the total number of TRUEs.
-               my_na <- is.na(my_data)
-               sum(my_na) -- total number of NAs  or length(my_data[is.na(my_data)])
-               
-          3. `!` gives us the negation of a logical expression, so !is.na(x) can be read as 'is not NA'. Therefore, if we
-             | want to create a vector called y that contains all of the non-NA values from x, we can use y <- x[!is.na(x)]. 
-             my_na <- !is.na(my_data)
-             sum(my_na) -- total number of non NAs
-               
-          
-  16. NaN 
-      1. It represent Not A Number
-          0 /0
-          Inf - Inf
-  
-          
-   17. Subsetting - how to extract elements from a vector based on some conditions
-      1. y [y >0] - only return those values which satisfy the condition. For exm:
-          x <- c(1,NA,NA,3,3,NA,NA,NA)
-          > x[!is.na(x)]
-          [1] 1 3 3
-          > x[is.na(x)]
-          [1] NA NA NA NA NA
-          
-     2.  x [ x >0] will not isolate the posititve number as NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence
-     | we get a bunch of NAs mixed in with our positive numbers when we do this.
-      
-     3. Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is
-| considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is
-     | considered element 1.
-
- 
-    4. It's important that when using integer vectors to subset our vector x, we stick with the set of indexes {1, 2, ..., 40}
-      since x only has 40 elements. What happens if we ask for the zeroth element of x (i.e. x[0])?
-        x[0]
-        numeric(0)
-        
-        
-        x[300]
-        [1] NA
-        
-        
-        Unfortunately, R doesn't prevent us from doing this. This should be a cautionary tale. You should always
-| make sure that what you are asking for is within the bounds of the vector you're working with.
-        
-      5. to find the positional element within vector 
-        1. Example - how we'd subset the 3rd, 5th, and 7th elements of x
-            x[c(3,5,7)]
-          [1] NA  3 NA
-    
-        2. R accepts positive and negative integer indexes.x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2,
-| -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.
-        
-        A shorthand way of specifying multiple negative numbers is to put the negative sign out in front of the vector of
-      | positive numbers.   
-            
-            x[c(-2, -10)]
-            x[-c(2, 10)]
-        
-        
-        
-        
-    
+#   15. NA
+#       1. Missing values play an important role in statistics and data analysis.
+#       2. In R, NA is used to represent any value that is 'not available' or 'missing' (in the statistical sense).
+#       3. Any operation involving NA generally yields NA as the result.
+#           my_data == NA
+#           [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 
+#           NA NA NA NA
+#           
+#           1. The reason you got a vector of all NAs is that NA is not really a value, but just a placeholder for a quantity that is
+#           | not available. Therefore the logical expression is incomplete and R has no choice but to return a vector of the same
+#           | length as my_data that contains all NAs.
+#           
+#           
+#           2. calculate Non NA value inside vector - R represents TRUE as the number 1 and FALSE as the number 0.
+#           | Therefore, if we take the sum of a bunch of TRUEs and FALSEs, we get the total number of TRUEs.
+#                my_na <- is.na(my_data)
+#                sum(my_na) -- total number of NAs  or length(my_data[is.na(my_data)])
+#                
+#           3. `!` gives us the negation of a logical expression, so !is.na(x) can be read as 'is not NA'. Therefore, if we
+#              | want to create a vector called y that contains all of the non-NA values from x, we can use y <- x[!is.na(x)]. 
+#              my_na <- !is.na(my_data)
+#              sum(my_na) -- total number of non NAs
+#                
+#           
+#   16. NaN 
+#       1. It represent Not A Number
+#           0 /0
+#           Inf - Inf
+#   
+#           
+#    17. Subsetting - how to extract elements from a vector based on some conditions
+#       1. y [y >0] - only return those values which satisfy the condition. For exm:
+#           x <- c(1,NA,NA,3,3,NA,NA,NA)
+#           > x[!is.na(x)]
+#           [1] 1 3 3
+#           > x[is.na(x)]
+#           [1] NA NA NA NA NA
+#           
+#      2.  x [ x >0] will not isolate the posititve number as NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence
+#      | we get a bunch of NAs mixed in with our positive numbers when we do this.
+#       
+#      3. Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is
+# | considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is
+#      | considered element 1.
+# 
+#  
+#     4. It's important that when using integer vectors to subset our vector x, we stick with the set of indexes {1, 2, ..., 40}
+#       since x only has 40 elements. What happens if we ask for the zeroth element of x (i.e. x[0])?
+#         x[0]
+#         numeric(0)
+#         
+#         
+#         x[300]
+#         [1] NA
+#         
+#         
+#         Unfortunately, R doesn't prevent us from doing this. This should be a cautionary tale. You should always
+# | make sure that what you are asking for is within the bounds of the vector you're working with.
+#         
+#       5. to find the positional element within vector 
+#         1. Example - how we'd subset the 3rd, 5th, and 7th elements of x
+#             x[c(3,5,7)]
+#           [1] NA  3 NA
+#     
+#         2. R accepts positive and negative integer indexes.x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2,
+# | -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.
+#         
+#         A shorthand way of specifying multiple negative numbers is to put the negative sign out in front of the vector of
+#       | positive numbers.   
+#             
+#             x[c(-2, -10)]
+#             x[-c(2, 10)]
+#         
+#       6. Named vecor
+#           First way --> 
+#             vect <- c(foo=11, bar=2, norf=NA)
+#               foo  bar norf 
+#                11    2   NA 
+#       
+#           Second way -->
+#               vect2<- c(11,2,NA)
+#               names(vect2) <- c("foo","bar","norf")
+# 
+#               
+#               
+#          
+#   18. Matrices and DataFrame
+# 
+#       1. Both represent 'rectangular' data types, meaning that they are used to store tabular data, with rows and columns.
+#       
+#       2. matrices can only contain a single class of data, while data frames can consist of many different classes of data.
+# 
+#       3. The dim() function tells us the 'dimensions' of an object. But when you use it for vector, you will get NULL
+#       
+#       4. The dim() function allows you to get OR set the `dim` attribute for an R object.
+#         > dim(my_vector)
+#         NULL
+#         
+#         dim(my_vector) <- c(4,5)
+#         [1] 4 5
+#       
+#       5. Check the attributes of R object --> dim() and attributes()
+#           > dim(my_vector)
+#           [1] 4 5
+#           
+#           > attributes(my_vector)
+#           $dim
+#           [1] 4 5
+#         
+#           x <- c(1,2,3,4,5,6)
+#           > dim(x) <- c(2,3)
+#           > x
+#           [,1] [,2] [,3]
+#           [1,]    1    3    5
+#           [2,]    2    4    6
+#           > attributes(x)
+#           $dim
+#           [1] 2 3
+#           
+#           > class(x)
+#           [1] "matrix"
+#         
+#         
+#       6. create a matrix containing the same numbers (1-20) and dimensions (4 rows, 5 columns) 
+#             my_matrix2 <- matrix(1:20, nrow=4, ncol=5)
+#       
+#       7. how to include the names of our patients in the table without destroying the integrity of our numeric data.
+#         --  data.frame() function allowed us to store our character vector of names right alongside our matrix of numbers.
+#         --Behind the scenes, the data.frame() function takes any number of arguments and returns a single object of class 
+#             `data.frame` that is composed of the original objects.   
+#            
+#              patients <- c("Bill", "Gina", "Kelly", "Sean")
+#            
+#              data.frame(patients, my_matrix)
+#            
+#                 patients X1 X2 X3 X4 X5
+#                 1     Bill  1  5  9 13 17
+#                 2     Gina  2  6 10 14 18
+#                 3    Kelly  3  7 11 15 19
+#                 4     Sean  4  8 12 16 20
+#       
+#       8. It's also possible to assign names to the individual rows and columns of a data frame
+#       
+#           cnames <- c("patient", "age","weight", "bp", "rating", "test")
+#           colnames(my_data) <- cnames
+#           my_data
+#             patient age weight bp rating test
+#                 1    Bill   1      5  9     13   17
+#                 2    Gina   2      6 10     14   18
+#                 3   Kelly   3      7 11     15   19
+#                 4    Sean   4      8 12     16   20  
+#               
             
     
     
