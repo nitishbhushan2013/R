@@ -130,10 +130,44 @@ swirl() # Start the program
           > x[is.na(x)]
           [1] NA NA NA NA NA
           
+     2.  x [ x >0] will not isolate the posititve number as NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence
+     | we get a bunch of NAs mixed in with our positive numbers when we do this.
       
-      
+     3. Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is
+| considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is
+     | considered element 1.
+
+ 
+    4. It's important that when using integer vectors to subset our vector x, we stick with the set of indexes {1, 2, ..., 40}
+      since x only has 40 elements. What happens if we ask for the zeroth element of x (i.e. x[0])?
+        x[0]
+        numeric(0)
+        
+        
+        x[300]
+        [1] NA
+        
+        
+        Unfortunately, R doesn't prevent us from doing this. This should be a cautionary tale. You should always
+| make sure that what you are asking for is within the bounds of the vector you're working with.
+        
+      5. to find the positional element within vector 
+        1. Example - how we'd subset the 3rd, 5th, and 7th elements of x
+            x[c(3,5,7)]
+          [1] NA  3 NA
     
-     
+        2. R accepts positive and negative integer indexes.x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2,
+| -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.
+        
+        A shorthand way of specifying multiple negative numbers is to put the negative sign out in front of the vector of
+      | positive numbers.   
+            
+            x[c(-2, -10)]
+            x[-c(2, 10)]
+        
+        
+        
+        
     
             
     
