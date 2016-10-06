@@ -1,6 +1,8 @@
 # Write a function named 'pollutantmean' that calculates the mean of a pollutant (sulfate or nitrate) across a 
 #specified list of monitors. 
 
+##Invoking funtion 
+pollutantmean("specdata", "nitrate", 23)
 
 
 #' The function 'pollutantmean' takes three arguments: 'directory', 'pollutant', and 'id'. 
@@ -16,24 +18,17 @@ pollutantmean <- function(directory, pollutant, id) {
   final_data <- numeric()
   
   
-  print(pollutant)
-  
   #Get the content of the file and perform the business reqs
-  
   for (i in id) {
     file_path <- paste(full_directory_path, file_names[i], sep = "")
-    file_data <- read.table(file_path,header=TRUE, stringsAsFactors=FALSE)
-    print(file_data)
-   # print(file_data[["sulfate"]])
+    file_data <- read.csv(file_path,header=TRUE)
+  
     # Store all the file reading into one variable
     final_data <- c(file_data[[pollutant]], final_data)
-    data = c(data, file_data[[pollutant]])
   }
   
-  #print(final_data)
   # Ignores all the NA and then get the mean of the final_data 
   mean <- mean(final_data, na.rm = TRUE)
-  
   print(mean)
 }
 
@@ -46,12 +41,11 @@ getAllFileNames <- function(directory) {
   path= paste(getwd(),"/",directory,"/", sep = "")
   #print(path)
   file_names = dir(path, pattern="*.csv" )
-  
 }
 
 
 
-#closeAllConnections() 
-sink("output1.log", append = FALSE)
-pollutantmean("specdata", "sulfate", 1)
-sink()
+
+
+
+
