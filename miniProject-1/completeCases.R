@@ -8,7 +8,7 @@ nobs <- numeric()
      id <- c(id, "011.csv")
      completeCase <- complete.cases(file_data)
      reaultantFrame <- file_data[completeCase,][1:4]
-     print(nrow(reaultantFrame))
+     print(nrow(reaultantFrame)) 
      nobs <- c(nobs, nrow(reaultantFrame))
 
  print(id)

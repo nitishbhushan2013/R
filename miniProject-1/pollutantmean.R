@@ -55,7 +55,7 @@ complete <- function(directory, id) {
       print(id)
       file_path <- paste(full_directory_path, file_names[i], sep = "")
       print(file_path)
-      file_data <- read.csv(file_path,header=TRUE)
+      file_data <- read.csv(file_path,header=TRUE) 
       print(file_data)
     #   id <- c(id, file_names[i])
     #   completeCase <- complete.cases(file_data)
