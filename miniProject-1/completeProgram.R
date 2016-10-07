@@ -45,7 +45,6 @@ getAllFileNames <- function(directory) {
   path= paste(getwd(),"/",directory,"/", sep = "")
   #print(path)
   file_names = dir(path, pattern="*.csv" )
-  
 }
    
 
