@@ -8,11 +8,13 @@ cr <- corr("specdata", 5000)
 head(cr)
 length(cr)
 summary(cr)
+
+
 # Approach
 # 1. Loop through the each file content of the supplied diretory
 # 2. Find completeCase and get count of it
 # 3. Compare count with the supplied threshold and if greater then get the resultant dataframe
-# 4. create sulfate and nitrate column vector of the current file
+# 4. create sulfate and nitrate column vector of the resultant dataframe file
 # 5. find corelation and store in the result vector 
 # 6. After all the loop, print the result vector  
 
@@ -25,7 +27,7 @@ summary(cr)
 #' @return numeric vector of corelation
 #' @author Nitish Bhushan
 
- 
+
 corr <- function(directory, threshold=0) {
   corr_count <- numeric()
   
@@ -41,23 +43,17 @@ corr <- function(directory, threshold=0) {
     file_data <- read.csv(file_path,header=TRUE)
     
     completeCase <- complete.cases(file_data)
-   # cat("complete cases.....",j)
-    #print(completeCase)
-   # cat("length of completeCase .... ", length(which(completeCase)))
-  #  cat("threasold--> ", threshold)
+   
     if(length(which(completeCase)) > threshold) {
-    #  print("Inside the loop......")
       reaultantFrame <- file_data[completeCase,][1:4]
-       sulfate <- c(reaultantFrame$sulfate)
-       nitrate <- c(reaultantFrame$nitrate)
-      # print(sulfate)
-       correlation <- cor(sulfate, nitrate)
-       #print(correlation)
-       corr_count <- c(corr_count, correlation)
+      sulfate <- c(reaultantFrame$sulfate)
+      nitrate <- c(reaultantFrame$nitrate)
+      correlation <- cor(sulfate, nitrate)
+      corr_count <- c(corr_count, correlation)
     }
   }
   corr_count
-  #print(corr_count)
+ 
 }
 
 
