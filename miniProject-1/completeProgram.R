@@ -1,5 +1,5 @@
 
-## Invoking function
+## Invoking function : use it to invoke below function
 complete("specdata", c(2, 4, 8, 10, 12))
 
 
