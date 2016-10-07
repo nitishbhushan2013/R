@@ -1,5 +1,5 @@
 ## SWIRL programming ###
-getwd()
+gnitoietwd()
 
 install.packages("swirl")  ## install the package
 library(swirl)  ## load the package
@@ -459,6 +459,85 @@ swirl() # Start the program
   #         Time difference of 0.009619268 days
       
       
+#    22. working with data   
+#     1. Whenever you're working with a new dataset, the first thing you should do is look at it! What is the format of
+# | the data? What are the dimensions? What are the variable names? How are the variables stored? Are there
+#     | missing data? Are there any flaws in the data?
+# 
+#     2. class(x) - This will give us a clue as to the overall structure of the data.
+#     
+#         > class(plants)
+#         [1] "data.frame"
+# 
+#     3. Use dim(plants) to see exactly how many rows and columns we're dealing with.
+#     
+#         > dim(plants)
+#         [1] 5166   10
+#     
+#     4. use nrow(plants) to see only the number of rows. and ncol(plants) to see only the number of rows.
+#     
+#     5. use object.size(plants) to see much space the dataset is occupying in memory
+#       > object.size(plants)
+#       644232 bytes
+#       
+#     6.  names(plants) will return a character vector of column (i.e. variable) names. 
+#     
+#     7. The head() function allows you to preview first 6 records of the top of the dataset. You can alter this behavior by passing as a second argument
+#     | the number of rows you'd like to view.
+#         head(plants, 10)
+# 
+#     8. Use tail() to preview the last 6 records of the end of the dataset
+# 
+#     9. Use summary(plants) to get a better feel for how each variable is distributed and how much of the dataset is missing.
+#         -- summary() provides different output for each variable, depending on its class. For numeric data such as Precip_Min,
+# | summary() displays the minimum, 1st quartile, median, mean, 3rd quartile, and maximum. 
+#         -- For categorical variables (called 'factor' variables in R), summary() displays the number of times each value (or
+# | 'level') occurs in the data. For example, each value of Scientific_Name only appears once, since it is unique to a
+#     | specific plant. In contrast, the summary for Duration (also a factor variable) tells us that our dataset contains 3031
+#     | Perennial plants, 682 Annual plants, etc.
+#     
+#         > summary(plants)
+#                            Scientific_Name              Duration              Active_Growth_Period      Foliage_Color 
+#           Abelmoschus                 :   1   Perennial        :3031   Spring and Summer   : 447      Dark Green  :  82  
+#           Abelmoschus esculentus      :   1   Annual           : 682   Spring              : 144      Gray-Green  :  25  
+#           Abies                       :   1   Annual, Perennial: 179   Spring, Summer, Fall:  95      Green       : 692  
+#           Abies balsamea              :   1   Annual, Biennial :  95   Summer              :  92      Red         :   4  
+#           Abies balsamea var. balsamea:   1   Biennial         :  57   Summer and Fall     :  24      White-Gray  :   9  
+#           Abutilon                    :   1   (Other)          :  92   (Other)             :  30      Yellow-Green:  20  
+#           (Other)                     :5160   NA's             :1030   NA's                :4334      NA's        :4334  
+#           pH_Min          pH_Max         Precip_Min      Precip_Max         Shade_Tolerance   Temp_Min_F    
+#           Min.   :3.000   Min.   : 5.100   Min.   : 4.00   Min.   : 16.00   Intermediate: 242   Min.   :-79.00  
+#           1st Qu.:4.500   1st Qu.: 7.000   1st Qu.:16.75   1st Qu.: 55.00   Intolerant  : 349   1st Qu.:-38.00  
+#           Median :5.000   Median : 7.300   Median :28.00   Median : 60.00   Tolerant    : 246   Median :-33.00  
+#           Mean   :4.997   Mean   : 7.344   Mean   :25.57   Mean   : 58.73   NA's        :4329   Mean   :-22.53  
+#           3rd Qu.:5.500   3rd Qu.: 7.800   3rd Qu.:32.00   3rd Qu.: 60.00                       3rd Qu.:-18.00  
+#           Max.   :7.000   Max.   :10.000   Max.   :60.00   Max.   :200.00                       Max.   : 52.00  
+#           NA's   :4327    NA's   :4327     NA's   :4338    NA's   :4338                         NA's   :4328    
+#           
+#           
+#       10. Perhaps the most useful and concise function for understanding the *str*ucture of your data is str().
+#           -- The beauty of str() is that it combines many of the features of the other functions you've already seen, all in a concise
+# | and readable format. At the very top, it tells us that the class of plants is 'data.frame' and that it has 5166
+# | observations and 10 variables. It then gives us the name and class of each variable, as well as a preview of its
+# | contents.
+# 
+#       -- str() is actually a very general function that you can use on most objects in R. Any time you want to understand the
+# | structure of something (a dataset, function, etc.), str() is a good place to start.
+# 
+# 
+#             > str(plants)
+#               'data.frame':	5166 obs. of  10 variables:
+#                     $ Scientific_Name     : Factor w/ 5166 levels "Abelmoschus",..: 1 2 3 4 5 6 7 8 9 10 ...
+#                     $ Duration            : Factor w/ 8 levels "Annual","Annual, Biennial",..: NA 4 NA 7 7 NA 1 NA 7 7 ...
+#                     $ Active_Growth_Period: Factor w/ 8 levels "Fall, Winter and Spring",..: NA NA NA 4 NA NA NA NA 4 NA ...
+#                     $ Foliage_Color       : Factor w/ 6 levels "Dark Green","Gray-Green",..: NA NA NA 3 NA NA NA NA 3 NA ...
+#                     $ pH_Min              : num  NA NA NA 4 NA NA NA NA 7 NA ...
+#                     $ pH_Max              : num  NA NA NA 6 NA NA NA NA 8.5 NA ...
+#                     $ Precip_Min          : int  NA NA NA 13 NA NA NA NA 4 NA ...
+#                     $ Precip_Max          : int  NA NA NA 60 NA NA NA NA 20 NA ...
+#                     $ Shade_Tolerance     : Factor w/ 3 levels "Intermediate",..: NA NA NA 3 NA NA NA NA 2 NA ...
+#                     $ Temp_Min_F          : int  NA NA NA -43 NA NA NA NA -13 NA ...
+#                     
       
       
       
