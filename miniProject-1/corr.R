@@ -4,11 +4,11 @@
 
 
 ## Invoking function : use it to invoke below function
-cr <- corr("specdata", 5000)
-head(cr)
-length(cr)
-summary(cr)
-
+cr <- corr("specdata", 2000)                
+n <- length(cr)                
+cr <- corr("specdata", 1000)                
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
 
 # Approach
 # 1. Loop through the each file content of the supplied diretory

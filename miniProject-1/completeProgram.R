@@ -1,7 +1,10 @@
 
 ## Invoking function : use it to invoke below function
-complete("specdata", c(2, 4, 8, 10, 12))
-
+cr <- corr("specdata")                
+cr <- sort(cr)                
+set.seed(868)                
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
 
 #' The function returns a data frame where the first column is the name of the file and the second column is 
 #' the number of complete cases. 

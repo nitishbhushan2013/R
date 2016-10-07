@@ -2,7 +2,7 @@
 #specified list of monitors. 
 
 ##Invoking funtion 
-#pollutantmean("specdata", "nitrate", 23)
+pollutantmean("specdata", "nitrate", 1:20)
 
 
 #' The function 'pollutantmean' takes three arguments: 'directory', 'pollutant', and 'id'. 
