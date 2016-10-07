@@ -47,6 +47,6 @@ getAllFileNames <- function(directory) {
   file_names = dir(path, pattern="*.csv" )
   
 }
- 
+   
 
 
