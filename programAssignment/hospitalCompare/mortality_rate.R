@@ -26,6 +26,7 @@ state_list
 s1 <- split(outcome, outcome[,7])
 head(s1,1)
 
+<<<<<<< HEAD
 subset1 <- head(outcome)
 
 tapply(subset1[,11], subset1$State, sum, na.rm=FALSE)
@@ -54,3 +55,8 @@ subset(df1)
 #subset(s2, min(as.numeric(as.character(s2[,3]))))
 
 #subset(df1$heart_attack_rate, df1$state == 'AL' & min(df1$heart_attack_rate, na.rm = TRUE))
+=======
+
+
+
+>>>>>>> ce32a1fbede1c2afe28cc789a1ae801cf68b909f

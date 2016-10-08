@@ -26,6 +26,7 @@ best <- function(state, outcome) {
     outcome_list <-c('heart attack', 'heart failure', 'pneumonia' )
     
     
+<<<<<<< HEAD
     if (!length(grep(state, state_list))) {
       stop("invalid state")
     }
@@ -34,6 +35,21 @@ best <- function(state, outcome) {
     if (!match(outcome, outcome_list)) {
       print("invalid outcome")
     } 
+=======
+    if (length(grep(state, state_list))) {
+      print("present .....")
+    } else {
+      print("Not Present .....")
+    }
+    
+    #check for outcome
+    # other imp functions to match content - match(), any(), is.element(): all returns boolean
+    if (match(outcome, outcome_list)) {
+      print("present .....")
+    } else {
+      print("Not Present .....")
+    }
+>>>>>>> ce32a1fbede1c2afe28cc789a1ae801cf68b909f
     
     
     #get the best (i.e. lowest) 30-day mortality for the specified outcome in that state.
