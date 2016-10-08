@@ -20,6 +20,19 @@ with(mtcars, tapply(hp, cyl, mean))
 
 
 set.seed(10)
-sample
+sampleplay()
 
+summary(mtcars)
+names(mtcars)
+mtcars$mpg
+table(mtcars$mpg)
+mtcars1<- head(mtcars,10)
+mtcars1
+mtcars$mpg
+table(mtcars1$mpg)
+dim(mtcars1)
+summary(mtcars1)
+table(mtcars1$mpg, mtcars1$cyl)
+mtcars1
+table(mtcars1$mpg, mtcars1$cyl, mtcars1$disp, mtcars1$hp)
 

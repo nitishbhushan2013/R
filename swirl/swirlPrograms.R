@@ -459,6 +459,8 @@ swirl() # Start the program
   #         Time difference of 0.009619268 days
       
       
+
+
 #    22. working with data   
 #     1. Whenever you're working with a new dataset, the first thing you should do is look at it! What is the format of
 # | the data? What are the dimensions? What are the variable names? How are the variables stored? Are there
@@ -540,8 +542,92 @@ swirl() # Start the program
 #                     
       
       
+   
+
+  # 23. Simulation
+  #   1. sample() to generate random number 
+  #   
+  #   2. Let's simulate rolling four six-sided dice: sample(1:6, 4, replace = TRUE).
+  # 
+  #       > sample(1:6, 4, replace=TRUE)
+  #       [1] 5 6 5 3  
+  # 
+  #   Now sample 10 numbers between 1 and 20, WITHOUT replacement.
+  #       sample(1:20, 10)
+  #     [1] 20 10  4 13 15 12  3  9  8 17
+  # 
+  # 
+  #         The sample() function can also be used to permute, or rearrange, the elements of a vector. For example, try
+  #     | sample(LETTERS) to permute all 26 letters of the English alphabet.
+  #         
+  #         > sample(LETTERS)
+  #         [1] "P" "O" "I" "C" "K" "V" "A" "X" "H" "F" "D" "W" "B" "Q" "N" "G" "T" "Y" "J" "M" "L" "U" "R" "Z" "S" "E"
+  #         
+  #         This is identical to taking a sample of size 26 from LETTERS, without replacement. When the 'size' argument to sample()
+  #     | is not specified, R takes a sample equal in size to the vector from which you are sampling.
+  #         
+  # 
+  #     3. suppose we want to simulate 100 flips of an unfair two-sided coin. This particular coin has a 0.3 probability of
+  #     | landing 'tails' and a 0.7 probability of landing 'heads'.
+  #     
+  #             Let the value 0 represent tails and the value 1 represent heads. Use sample() to draw a sample of size 100 from the
+  #         | vector c(0,1), with replacement. Since the coin is unfair, we must attach specific probabilities to the values 0 (tails)
+  #             | and 1 (heads) with a fourth argument, prob = c(0.3, 0.7). Assign the result to a new variable called flips.
+  #                
+  #                    flips <- sample(c(0,1), 100, replace=TRUE, prob=c(0.3,0.7))
+  # 
+  # 
+  # 
+  #       4. binomial random variable - A coin flip is a binary outcome (0 or 1) and we are performing 100 independent 
+  #           trials (coin flips), so we can use rbinom() to simulate a binomial random variable.
+  #           
+  #               A binomial random variable represents the number of 'successes' (heads) in a given number of independent
+  #             'trials' (coin flips). Therefore, we can generate a single random variable that represents the number of heads in 100 flips of our 
+  #             unfair coin using rbinom(1, size = 100, prob = 0.7). Note that you only specify the probability of 'success' 
+  #             (heads) and NOT the probability of 'failure' (tails).
+  # 
+  #                 rbinom(1, size=100,prob=0.7)
+  #                     [1] 72
+  # 
+  # 
+  #           Equivalently, if we want to see all of the 0s and 1s, we can request 100 observations, each of size 1, with 
+  #         success probability of 0.7. Give it a try, assigning the result to a new variable called flips2.
+  # 
+  #                   flips2 <- rbinom(100, 1, prob=0.7)
+  #                       flips2
+  #                         [1] 0 1 1 1 0 0 1 1 0 0 1 1 1 1 0 0 1 1 1 0 1 0 1 1 0 1 0 0 0 1 1 1 1 0 1 0 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 0 1 0 0 0 1 1 0
+  #                           [60] 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 0 0 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 1
+  # 
+  # 
+  #       5. Standard normal distribution - rnorm()
+  #           The standard normal distribution has mean 0 and standard deviation 1.Thus, rnorm(10) will generate 10 random
+  #           numbers from a standard normal distribution.
+  # 
+  #         Generate 5 random values from a Poisson distribution with mean 10.
+  #             rpois(5,10)
+  #                 [1]  7  8 12 12 15
+  # 
+  #         simulate 100 *groups* of random numbers, each containing 5 values generated from a Poisson distribution with 
+  #         mean 10?
+  #              my_pois <- replicate(100, rpois(5,10))
+  #        
+  #        replicate() created a matrix, each column of which contains 5 random numbers generated from a Poisson distribution 
+  #           with mean 10.    
+  # 
+  # 
+  #         Now we can find the mean of each column in my_pois using the colMeans() function
+  #               cm <- colMeans(my_pois)
+
+          
+
+            
+
       
-      
+        
+          
+                
+          
+    
       
     
     
