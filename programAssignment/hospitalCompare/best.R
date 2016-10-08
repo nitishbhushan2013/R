@@ -21,36 +21,20 @@
   #1. Read the file and check the validity for state and outcome.Throw message if required
   #2. store the hospital name matching the condition and return it.
 best <- function(state, outcome) {
-    #check for state
     state_list <- unique(outcome[,7])
     outcome_list <-c('heart attack', 'heart failure', 'pneumonia' )
-    
-    
-<<<<<<< HEAD
+
+    #check for state
     if (!length(grep(state, state_list))) {
       stop("invalid state")
     }
-    #check for outcome
+  
+      #check for outcome
     # other imp functions to match content - match(), any(), is.element(): all returns boolean
     if (!match(outcome, outcome_list)) {
       print("invalid outcome")
     } 
-=======
-    if (length(grep(state, state_list))) {
-      print("present .....")
-    } else {
-      print("Not Present .....")
-    }
-    
-    #check for outcome
-    # other imp functions to match content - match(), any(), is.element(): all returns boolean
-    if (match(outcome, outcome_list)) {
-      print("present .....")
-    } else {
-      print("Not Present .....")
-    }
->>>>>>> ce32a1fbede1c2afe28cc789a1ae801cf68b909f
-    
+   
     
     #get the best (i.e. lowest) 30-day mortality for the specified outcome in that state.
 }
