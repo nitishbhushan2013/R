@@ -620,7 +620,35 @@ swirl() # Start the program
 
           
 
-            
+  # 24. Graphs graphics: Plotting
+  #   1. Before plotting, it is always a good idea to get a sense of the data. Key R commands for doing so include, dim(), 
+  #       names(), head(), tail() and summary().
+  #   
+  #   Use plot() command to show speed on the x-axis and dist on the y-axis from the cars data frame. 
+  #     plot(x=cars$speed, y=cars$dist)
+  #   
+  #   Recreate the plot with the label of the x-axis set to "Speed".
+  #     plot(x=cars$speed, y=cars$dist, xlab="speed")
+  #   
+  #   Recreate the plot with "Speed" and "Stopping Distance" as axis labels.
+  #     plot(x=cars$speed, y=cars$dist, xlab="Speed", ylab="Stopping Distance", main="My Plot")
+  #     
+  #   Plot cars with a main title of "My Plot".
+  #     plot(cars, main = "My Plot")
+  #     
+  #   Plot cars with a sub title of "My Plot Subtitle".
+  #     plot(cars, main="My Plot Subtitle")
+  #     
+  #  Use boxplot() with formula = mpg ~ cyl and data = mtcars to create a box plot.
+  #     boxplot(formula=mpg~cyl, mtcars)
+  #     
+  # When looking at a single variable, histograms are a useful tool. hist()    
+      
+      
+      
+      
+      
+      
 
       
         
