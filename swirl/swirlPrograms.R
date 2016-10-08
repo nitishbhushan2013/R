@@ -1,5 +1,4 @@
 ## SWIRL programming ###
-gnitoietwd()
 
 install.packages("swirl")  ## install the package
 library(swirl)  ## load the package

@@ -51,6 +51,8 @@ for (i in 1:101) {
 
 
 
+
+
 #################################################################################################
 
 
@@ -133,3 +135,57 @@ unlink("output.txt") # delete the file
 
 
 getwd()
+
+
+######################################################################################
+################################################
+outcome <- read.csv("outcome-of-care-measures.csv")
+#str(outcome)
+#names(outcome)
+#colnames(outcome)
+
+outcol <- as.numeric(outcome[, 11])
+
+df <- data.frame(x= outcome[,7], y= outcome[,11])
+#head(df, 20)
+#head(outcome)
+
+
+######## Get unique element from the list
+state_list <- unique(outcome[,7])
+state_list
+
+
+######## Check exiatance of element in the vector
+
+###1: grep()
+
+if (length(grep("GA", state_list))) {
+  print("present .....")
+} else {
+  print("Not Present .....")
+}
+
+##2: is.element()
+if (is.element("GA", state_list)) {
+  print("present .....")
+} else {
+  print("Not Present .....")
+}
+
+##3: match
+if (match("GA", state_list)) {
+  print("present .....")
+} else {
+  print("Not Present .....")
+}
+
+##3: any
+if (any("GA" == state_list)) {
+  print("present .....")
+} else {
+  print("Not Present .....")
+}
+
+###########################################################################
+

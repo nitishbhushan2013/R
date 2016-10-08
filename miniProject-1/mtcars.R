@@ -36,3 +36,18 @@ table(mtcars1$mpg, mtcars1$cyl)
 mtcars1
 table(mtcars1$mpg, mtcars1$cyl, mtcars1$disp, mtcars1$hp)
 
+
+str(mtcars)
+head(mtcars)
+
+
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+
+s <- split(mtcars, mtcars$cyl)
+str(s)
+
+head(mtcars)
+
+mtcars2 <- data.frame(x=mtcars[,1], y=mtcars[,4], yq=mtcars[,2], y2=mtcars[,10])
+head(mtcars2)
+str(mtcars2)
