@@ -55,3 +55,71 @@ subset(df1)
 #subset(s2, min(as.numeric(as.character(s2[,3]))))
 
 #subset(df1$heart_attack_rate, df1$state == 'AL' & min(df1$heart_attack_rate, na.rm = TRUE))
+
+
+
+hosp <- read.csv("outcome-of-care-measures.csv")
+#str(hosp)
+
+# subset the required column into new dataframe 
+hosp_subset <- subset(hosp, select = c(2,7,11,17,23))
+names(hosp_subset)[3] <- "heart_attack"
+names(hosp_subset)[4] <- "heart_failure"
+names(hosp_subset)[5] <- "pneumonia"
+
+names(hosp_subset)
+#head(hosp_subset)
+#str(hosp_subset)
+host_name <- character()
+
+state <- "BB"
+outcome <- "heart attack"
+
+state_list <- unique(hosp_subset[,2])
+outcome_list <-c('heart attack', 'heart failure', 'pneumonia' )
+
+
+##  subset based on state 
+hosp_subset_state <- subset(hosp_subset, hosp_subset$State == state)
+
+  
+  #check for state
+  if (!length(grep(state, state_list))) {
+    stop("invalid state", call. = TRUE)
+  }
+  
+  #check for outcome
+  # other imp functions to match content - match(), any(), is.element(): all returns boolean
+  if (!match(outcome, outcome_list)) {
+    print("invalid outcome")
+  } 
+  
+  
+  if( outcome == 'heart attack') {
+    #get the rank
+    rank_HA <- order(hosp_subset_state[[3]])
+    
+  }else if ( outcome == 'heart failure') {
+    #get the rank
+    rank_HA <- order(hosp_subset_state[[4]])  
+    
+  } else if ( outcome == 'pneumonia') {
+    #get the rank
+    rank_HA <- order(hosp_subset_state[[5]])
+  }
+  cat("ranks is...",rank_HA )
+  # get all the ordered rows
+  hosp_subset_state_rank <-hosp_subset_state [rank_HA, ] 
+  #head(hosp_subset_state_rank,1)
+ # names(hosp_subset_state_rank)
+  #pick the first row which will be the lowest rate
+  #hospital_name <- hosp_subset_state_rank[[1]][1]
+  head(hosp_subset_state_rank,1)
+  
+  #hospital_name <- hosp_subset_state_rank$Hospital.Name[2]
+  hospital_name <-hosp_subset_state_rank[1,][1]
+  hospital_name
+  #cat("hospital anme is .....",hospital_name)
+  #host_name <-c(host_name,hospital_name)
+
+  #host_name

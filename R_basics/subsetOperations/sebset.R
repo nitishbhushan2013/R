@@ -55,17 +55,18 @@ str(cars_2)
 ###Sorting - For data frame,its donw thrugh order() which gives back the rank and then we use ranks as rows
 # to get back the ordered data frame
 head(cars_1)
-ranks <- order(cars_1$mpg)
+#ranks <- order(cars_1$mpg)
+ranks <- order(cars_1[[1]])
+cat("ranks is ......", ranks )
 cars_1_mpg <- cars_1[ranks, ] # give us all the rows
 cars_1_mpg[1,]
     # mpg cyl disp  hp drat   wt  qsec vs am gear carb
     # Cadillac Fleetwood 10.4   8  472 205 2.93 5.25 17.98  0  0    3    4
 cars_1_mpg$mpg[1]
   # [1] 10.4
-
-
+#cars_1_mpg[[1]][1]
 ###Sorting in descending order
-ranks <- order(cars_1$mpg, decreasing=TRUE)
+#ranks <- order(cars_1$mpg, decreasing=TRUE)
 
 
 
