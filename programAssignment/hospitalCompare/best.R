@@ -29,6 +29,7 @@ best <- function(state, outcome) {
   
     # subset the required column into new dataframe and rename long colname to suitable short name
     hosp_subset <- subset(hosp, select = c(2,7,11,17,23))
+  
     names(hosp_subset)[3] <- "heart_attack"
     names(hosp_subset)[4] <- "heart_failure"
     names(hosp_subset)[5] <- "pneumonia"
@@ -61,15 +62,15 @@ best <- function(state, outcome) {
     # based on outcome, sort the appropriate column
     if( outcome == 'heart attack') {
       #get the rank
-      rank_HA <- order(hosp_subset_state[[3]])
+      rank_HA <- order(hosp_subset_state[,3])
       
     }else if ( outcome == 'heart failure') {
       #get the rank
-      rank_HA <- order(hosp_subset_state[[4]])  
+      rank_HA <- order(hosp_subset_state[,4])  
       
     } else if ( outcome == 'pneumonia') {
       #get the rank
-      rank_HA <- order(hosp_subset_state[[5]])
+      rank_HA <- order(hosp_subset_state[,5])
     }
     
     # use the rank to get all the ordered rows
@@ -87,5 +88,5 @@ best <- function(state, outcome) {
 
 
 ## Invoking function
-best("NY", "hert attack")
+best("TX", "heart failure")
 
