@@ -2,7 +2,7 @@
 hosp <- read.csv("outcome-of-care-measures.csv")
 
 host_name <- character()
-state <- 'MD'
+
 outcome <- 'heart attack'
 num <- 10
 
@@ -20,10 +20,6 @@ names(hosp_subset)[5] <- "pneumonia"
 state_list <- unique(hosp_subset[,2]) 
 
 
-#validate state and stop the program with error message
-if (!length(grep(state, state_list))) {
-  stop("invalid state", call. = TRUE)
-}
 
 #validate state and stop the program with error message
 if (!is.element(outcome, outcome_list)) {
