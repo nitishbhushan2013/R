@@ -140,3 +140,41 @@ completeFun <- function(data, desiredCols) {
 completeFun(DF, "y")
 
 
+
+### split funtions 
+# https://www.r-bloggers.com/a-quick-primer-on-split-apply-combine-problems/
+## S-A-C : Split, Apply and Combine approach
+
+airquality30 <- head(airquality,30)
+#airquality30
+
+#str(airquality$Month)
+#unique(airquality$Month)
+airqualityLocal <- subset(airquality, select = c(1,3,4,5))
+#str(airqualityLocal)
+print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+##sort temp order by month
+airquality_month <- split(airqualityLocal,airqualityLocal$Month)
+#sapply(airquality_month, class)
+split1 <- lapply(airquality_month,function(x) {
+    # x is dataframe
+   names(x)
+})
+
+#sort temp
+airqualityLocal <- airqualityLocal[order(airqualityLocal$Temp),] 
+#split by month
+airqualityLocal_month <- split(airqualityLocal, airqualityLocal$Month )
+airqualityLocal_month
+str(airqualityLocal_month[[3]])
+
+#get first row for which month = month[3] --> 7
+airqualityLocal_month[[3]][1,]
+
+# get the uniqie MOnth
+unique(airqualityLocal$Month)[1] 
+
+#Fiter by month
+airqualityLocal_month[[unique(airqualityLocal$Month)[1]]][1,]
+
+
